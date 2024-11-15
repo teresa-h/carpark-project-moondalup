@@ -3,6 +3,7 @@ from display import Display
 from sensor import Sensor
 import unittest
 
+
 class TestCarPark(unittest.TestCase):
     def setUp(self):
         self.car_park = CarPark("123 Smith Street", 150)
@@ -41,5 +42,7 @@ class TestCarPark(unittest.TestCase):
         with self.assertRaises(ValueError):
             self.car_park.remove_car("NO-1")
 
+
 if __name__ == "__main__":
     unittest.main()
+

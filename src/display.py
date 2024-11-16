@@ -6,11 +6,9 @@ class Display:
         self.message = message
         self.is_on = is_on
 
-
     def __str__(self):
         return f"Display {id}: {self.message}"
 
     def update(self, data):
         for key, value in data.items():
-            print(f"{key}: {value}")
-
+            setattr(self, key, value)

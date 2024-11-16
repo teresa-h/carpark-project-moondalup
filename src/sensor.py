@@ -17,7 +17,7 @@ class Sensor(ABC):
         pass
 
     def _scan_plate(self):
-        return f"JFC- {str(random.randint(100, 999))}"
+        return f"JFC-{str(random.randint(100, 999))}"
 
     def detect_vehicle(self):
         plate = self._scan_plate()

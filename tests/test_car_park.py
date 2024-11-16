@@ -7,7 +7,7 @@ import unittest
 
 class TestCarPark(unittest.TestCase):
     def setUp(self):
-        self.car_park = CarPark("123 Smith Street", 150, log_file="log.txt")
+        self.car_park = CarPark("123 Smith Street", 150, log_file="log.txt", config_file="config.json")
 
     def test_car_park_initialized_with_all_attributes(self):
         self.assertIsInstance(self.car_park, CarPark)
@@ -18,6 +18,7 @@ class TestCarPark(unittest.TestCase):
         self.assertEqual(self.car_park.displays, [])
         self.assertEqual(self.car_park.available_bays, 150)
         self.assertEqual(self.car_park.log_file, Path("log.txt"))
+        self.assertEqual(self.car_park.config_file, Path("config.json"))
 
     def test_add_car(self):
         self.car_park.add_car("NMTAFE-001")

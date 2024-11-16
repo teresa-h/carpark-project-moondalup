@@ -42,6 +42,12 @@ class TestCarPark(unittest.TestCase):
         with self.assertRaises(ValueError):
             self.car_park.remove_car("NO-1")
 
+    def test_register_raises_type_error(self):
+        self.car_park = CarPark("99 Baker Street", 50)
+        component = "Apple"
+        with self.assertRaises(TypeError):
+            self.car_park.register(component)
+
 
 if __name__ == "__main__":
     unittest.main()

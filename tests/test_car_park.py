@@ -10,14 +10,14 @@ class TestCarPark(unittest.TestCase):
         self.car_park = CarPark("123 Smith Street", 150, log_file="log.txt", config_file="config.json")
 
     def test_car_park_initialized_with_all_attributes(self):
-        self.assertIsInstance(self.car_park, CarPark)
-        self.assertEqual(self.car_park.location, "123 Smith Street")
-        self.assertEqual(self.car_park.capacity, 150)
-        self.assertEqual(self.car_park.plates, [])
-        self.assertEqual(self.car_park.sensors, [])
-        self.assertEqual(self.car_park.displays, [])
-        self.assertEqual(self.car_park.available_bays, 150)
-        self.assertEqual(self.car_park.log_file, Path("log.txt"))
+        self.assertIsInstance(self.car_park, CarPark)  # checks it is a CarPark
+        self.assertEqual(self.car_park.location, "123 Smith Street")  # checks location of carpark
+        self.assertEqual(self.car_park.capacity, 150)  # checks capacity of carpark
+        self.assertEqual(self.car_park.plates, [])  # checks plates of carpark and defaults to empty list if none
+        self.assertEqual(self.car_park.sensors, [])  # checks sensors of carpark and defaults to empty list if none
+        self.assertEqual(self.car_park.displays, []) # checks displays of carpark and defaults to empty list if none
+        self.assertEqual(self.car_park.available_bays, 150)  # checks amount of available bays
+        self.assertEqual(self.car_park.log_file, Path("log.txt"))  
         self.assertEqual(self.car_park.config_file, Path("config.json"))
 
     def test_add_car(self):
@@ -64,9 +64,9 @@ class TestCarPark(unittest.TestCase):
         self.car_park.add_car("NEW-001")
         with self.car_park.log_file.open() as f:
             last_line = f.readlines()[-1]
-        self.assertIn("NEW-001", last_line)
-        self.assertIn("entered", last_line)
-        self.assertIn("\n", last_line)
+        self.assertIn("NEW-001", last_line)  # check plate entered
+        self.assertIn("entered", last_line)  # check description
+        self.assertIn("\n", last_line)  # check entry has a new line
 
     def test_car_logged_when_exiting(self):
         new_carpark = CarPark("123 Example Street", 100,
